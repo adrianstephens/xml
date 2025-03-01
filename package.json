@@ -1,6 +1,6 @@
 {
   "name": "@isopodlabs/xml",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Self contained package for XML reading, writing and manipulation.",
   "main": "src/xml.ts",
   "scripts": {
