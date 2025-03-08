@@ -3,6 +3,10 @@
   "version": "1.0.2",
   "description": "Self contained package for XML reading, writing and manipulation.",
   "main": "src/xml.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "echo \"No tests specified\" && exit 0"
@@ -20,7 +24,7 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^9.21.0",
-    "typescript": "^4.0.0",
+    "typescript": "^5.8.2",
     "typescript-eslint": "^8.26.0"
   }
 }
