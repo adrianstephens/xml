@@ -200,10 +200,6 @@ export class EntityCreator {
 }
 ```
 
-## TypeScript Configuration
-
-This package is written in TypeScript. Ensure you have a `tsconfig.json` file in your project to compile the TypeScript code.
-
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.

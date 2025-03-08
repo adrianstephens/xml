@@ -145,7 +145,7 @@ export const reENTITY = /&(?:#(\d{1,7})|#(x[a-f0-9]{1,6})|([a-z][a-z0-9]{1,31}))
 export function decodeEntity(entities: Entities, ...m: string[]) {
 	return m[1] ? String.fromCharCode(parseInt(m[1], 10))
 		: m[2] ? String.fromCharCode(parseInt(m[2], 16))
-		: entities[m[3]] ?? m[0]
+		: entities[m[3]] ?? m[0];
 }
 
 export function removeEntities(text: string, entities: Entities) {
@@ -173,7 +173,7 @@ export class EntityCreator {
 export const defaultEntityCreator = new EntityCreator(defaultEntities);
 
 export function writeAttributes(attributes: Attributes, entity_creator: EntityCreator = defaultEntityCreator, after = ' ') {
-	const a = Object.entries(attributes).filter(([k, v]) => v !== undefined).map(([k, v]) => `${k}="${entity_creator.replace(v.toString())}"`).join(' ');
+	const a = Object.entries(attributes).filter(([_, v]) => v !== undefined).map(([k, v]) => `${k}="${entity_creator.replace(v.toString())}"`).join(' ');
 	return a ? ' ' + a + after : '';
 }
 
