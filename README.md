@@ -1,6 +1,5 @@
 # @isopodlabs/xml
 
-# XML
 
 This package provides a complete solution for working with XML in TypeScript. It allows you to create, manipulate, and parse XML documents easily, and can parse html with appropriate options.
 
@@ -20,13 +19,11 @@ npm install @isopodlabs/package
 ```
 
 ## Importing the Package
-
 ```typescript
 import * as xml from 'xml';
 ```
 
 ## Loading XML
-
 ```typescript
 const xmlString = `<root><child>Text</child></root>`;
 const rootElement = xml.parse(xmlString);
@@ -41,7 +38,7 @@ export interface InputOptions {
 	allowNonQuotedAttribute?: boolean,
 }
 ```
-- `entities`: By default only `amp`, `gt`, `lt`, and `quot` entities are recognised. This allows Additional entities to be recognised.
+- `entities`: By default only `amp`, `gt`, `lt`, and `quot` entities are recognised. This option allows additional entities to be recognised.
 - `allowUnclosed`: Allows tags that match this RegExp to omit their closing tag.
 - `allowAttributeWithoutValue`: Allows attributes without the ="\<value\>" part.
 - `allowNonQuotedAttribute`: Allows attributes to be unquoted.
@@ -68,9 +65,7 @@ export interface OutputOptions {
 - `entities`: additional entities to use when outputting text. Default uses only `amp`, `gt`, and `lt` (and `quot` inside attributes).
 
 ## Element
-
- Represents an XML element.
-
+Represents an XML element.
 ```typescript
 class Element {
 //properties
@@ -108,7 +103,6 @@ const element = new xml.Element("root", { attr: "value" }, [
 ```
 
 ### Node
-
 A `xml.Node` is a child of an `Element`. It can be an `Element`, a `string`, or anything that provides a method `toString(options?: OutputOptions)`.
 In particular, the following classes are provided:
 
@@ -130,23 +124,18 @@ export class DocType {
 }
 ```
 
-`add(e: xml.Node)` adds a node to an `Element`.
-`remove(e: xml.Node)` removes a node from an `Element`.
-`setText(text: string)` sets the first `string` node to the given text (or adds it if none).
+- `add(e: xml.Node)` adds a node to an `Element`.
+- `remove(e: xml.Node)` removes a node from an `Element`.
+- `setText(text: string)` sets the first `string` node to the given text (or adds it if none).
 
 
 ### Traversal
-`parent` is the parent `Element` of this `Element` (if any).
-
-`children` is an array of the child nodes in the order they were parsed from the xml file.
-
-`firstElement()` returns the first child that is an `Element` (if any).
-
-`allElements()` returns only the children that are `Element`s.
-
-`firstText()` returns the first child that is an `string` (if any).
-
-`allText()` returns only the children that are `string`s. Use `join` to combine them if necessary.
+- `parent` is the parent `Element` of this `Element` (if any).
+- `children` is an array of the child nodes in the order they were parsed from the xml file.
+- `firstElement()` returns the first child that is an `Element` (if any).
+- `allElements()` returns only the children that are `Element`s.
+- `firstText()` returns the first child that is an `string` (if any).
+- `allText()` returns only the children that are `string`s. Use `join` to combine them if necessary.
 
 ### By name
 
@@ -202,4 +191,4 @@ export class EntityCreator {
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License.
