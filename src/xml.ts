@@ -32,11 +32,12 @@ export const criticalEntities: Entities = {
 export const defaultEntities = { ...criticalEntities, quot: '"' };
 
 export interface OutputOptions {
-	newline?: string,
-	indent?: string,
-	afteratt?: string,
-	entities?: Entities | EntityCreator,
-	entities_att?: EntityCreator,
+	newline?: 			string,
+	indent?: 			string,
+	afteratt?: 			string,
+	entities?: 			Entities | EntityCreator,
+	entities_att?: 		EntityCreator,
+	noSelfClose?: 		RegExp,
 }
 
 export class Element {
@@ -81,7 +82,7 @@ export class Element {
 		if (this.name.startsWith('?'))
 			return xml += '?>' + newline + this.children[0].toString(options);
 
-		if (this.children.length || this.attributes['xml:space'] === 'preserve') {
+		if (this.children.length || this.attributes['xml:space'] === 'preserve' || options.noSelfClose?.test(this.name)) {
 			const entities = options.entities;
 			const nextline = newline + options.indent;
 			options = { ...options, newline: nextline };
@@ -193,15 +194,15 @@ export function parseAttributes(text: string, entities: Entities): Attributes {
 }
 
 export interface SaxOptions {
-	onerror?: (e: Error) => boolean | void;
-	ontext?: (t: string) => void;
-	ondoctype?: (doctype: string) => void;
-	onprocessing?: (name: string, body: string) => void;
-	onopentag?: (tagName: string, attributes: Attributes) => void;
-	onclosetag?: (tagName: string) => void;
-	oncomment?: (comment: string) => void;
-	oncdata?: (cdata: string) => void;
-	entities?: Entities;
+	onerror?: 		(e: Error) => boolean | void;
+	ontext?: 		(t: string) => void;
+	ondoctype?: 	(doctype: string) => void;
+	onprocessing?: 	(name: string, body: string) => void;
+	onopentag?: 	(tagName: string, attributes: Attributes) => void;
+	onclosetag?: 	(tagName: string) => void;
+	oncomment?: 	(comment: string) => void;
+	oncdata?: 		(cdata: string) => void;
+	entities?: 		Entities;
 }
 
 export function sax(xml: string, options: SaxOptions) {
@@ -312,10 +313,10 @@ export function sax(xml: string, options: SaxOptions) {
 }
 
 export interface InputOptions {
-	entities?: Entities,
-	allowUnclosed?: RegExp,
+	entities?: 					Entities,
+	allowUnclosed?: 			RegExp,
 	allowAttributeWithoutValue?: boolean,
-	allowNonQuotedAttribute?: boolean,
+	allowNonQuotedAttribute?:	boolean,
 }
 
 export function parse(xml: string, options?: InputOptions) {
