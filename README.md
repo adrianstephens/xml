@@ -6,6 +6,9 @@
 
 This package provides a complete solution for working with XML in TypeScript. It allows you to create, manipulate, and parse XML documents easily, and can parse html with appropriate options.
 
+## ☕ Support My Work  
+If you use this package, consider [buying me a tea](https://coff.ee/adrianstephens) to support future updates!  
+
 ## Why
 
 - Self Conatained
