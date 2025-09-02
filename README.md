@@ -1,4 +1,7 @@
 # @isopodlabs/xml
+[![npm version](https://img.shields.io/npm/v/@isopodlabs/xml.svg)](https://www.npmjs.com/package/@isopodlabs/xml)
+[![GitHub stars](https://img.shields.io/github/stars/adrianstephens/xml.svg?style=social)](https://github.com/adrianstephens/xml)
+[![License](https://img.shields.io/npm/l/@isopodlabs/xml.svg)](LICENSE)
 
 
 This package provides a complete solution for working with XML in TypeScript. It allows you to create, manipulate, and parse XML documents easily, and can parse html with appropriate options.

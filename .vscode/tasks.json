@@ -22,9 +22,16 @@
 		{
 			"type": "shell",
 			"label": "PUBLISH",
-			"command": "npm publish",
+			"command": "npm publish --access public",
 			"problemMatcher": [],
 			"dependsOn": "prepublish"
+		},
+		{
+			"type": "shell",
+			"label": "PACKAGE",
+			"command": "npm pack",
+			"problemMatcher": [],
+			"dependsOn": "npm: build"
 		},
 	],
 	"inputs": [
