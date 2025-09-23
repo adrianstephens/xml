@@ -1,13 +1,13 @@
 # @isopodlabs/xml
 [![npm version](https://img.shields.io/npm/v/@isopodlabs/xml.svg)](https://www.npmjs.com/package/@isopodlabs/xml)
 [![GitHub stars](https://img.shields.io/github/stars/adrianstephens/xml.svg?style=social)](https://github.com/adrianstephens/xml)
-[![License](https://img.shields.io/npm/l/@isopodlabs/xml.svg)](LICENSE)
+[![License](https://img.shields.io/npm/l/@isopodlabs/xml.svg)](LICENSE.txt)
 
 
 This package provides a complete solution for working with XML in TypeScript. It allows you to create, manipulate, and parse XML documents easily, and can parse html with appropriate options.
 
 ## ☕ Support My Work  
-If you use this package, consider [buying me a tea](https://coff.ee/adrianstephens) to support future updates!  
+If you use this package, consider [buying me a cup of tea](https://coff.ee/adrianstephens) to support future updates!  
 
 ## Why
 
@@ -21,7 +21,7 @@ If you use this package, consider [buying me a tea](https://coff.ee/adrianstephe
 To install the package, use npm:
 
 ```
-npm install @isopodlabs/package
+npm install @isopodlabs/xml
 ```
 
 ## Importing the Package
@@ -109,7 +109,7 @@ const element = new xml.Element("root", { attr: "value" }, [
 ```
 
 ### Node
-A `xml.Node` is a child of an `Element`. It can be an `Element`, a `string`, or anything that provides a method `toString(options?: OutputOptions)`.
+A `xml.Node` is a child of an `Element`. It can be another `Element`, a `string`, or anything that provides a method `toString(options?: OutputOptions)`.
 In particular, the following classes are provided:
 
 ```typescript
@@ -145,7 +145,7 @@ export class DocType {
 
 ### By name
 
-`elements` returns an object whose property names are the names of the `Element`'s child `Element`s. This allows for easy access to expected child Elements:
+`elements` returns an object whose property names are the names of the `Node`'s child `Element`s. This allows for easy access to expected child Elements:
 ```typescript
 const xmlString = `<root><child>Text</child></root>`;
 const rootElement = xml.parse(xmlString);

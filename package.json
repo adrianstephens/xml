@@ -1,30 +1,30 @@
 {
-  "name": "@isopodlabs/xml",
-  "version": "1.2.0",
-  "description": "Self contained package for XML reading, writing and manipulation.",
-  "main": "dist/xml.js",
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "test": "echo \"No tests specified\" && exit 0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/adrianstephens/xml.git"
-  },
-  "keywords": [
-    "xml",
-    "parser",
-    "typescript"
-  ],
-  "author": "Adrian Stephens",
-  "license": "MIT",
-  "devDependencies": {
-    "eslint": "^9.21.0",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.26.0"
-  }
+	"name": "@isopodlabs/xml",
+	"version": "1.2.0",
+	"description": "Self contained package for XML reading, writing and manipulation.",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/adrianstephens/ts-xml.git"
+	},
+	"main": "dist/xml.js",
+	"files": [
+		"dist/**/*.{js,d.ts}",
+		"README.md"
+	],
+	"scripts": {
+		"build": "tsc",
+		"test": "echo \"No tests specified\" && exit 0"
+	},
+	"keywords": [
+		"xml",
+		"parser",
+		"typescript"
+	],
+	"author": "Adrian Stephens",
+	"license": "MIT",
+	"devDependencies": {
+		"eslint": "^9.21.0",
+		"typescript": "^5.8.2",
+		"typescript-eslint": "^8.26.0"
+	}
 }

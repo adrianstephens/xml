@@ -17,7 +17,7 @@ export interface StringLike {
 	toString(options?: OutputOptions): string;
 }
 
-export type Node = Element | string | Comment | CDATA | DocType | StringLike;
+export type Node = Element | string | StringLike;
 export type Attributes = Record<string, any>;
 export type Entities = Record<string, string>;
 
@@ -41,10 +41,10 @@ export interface OutputOptions {
 }
 
 export class Element {
-	next?: Element;
-	parent?: Element;
-	_elements?: Record<string, Element>;
-	options?: OutputOptions;
+	next?:		Element;
+	parent?:	Element;
+	_elements?:	Record<string, Element>;
+	//options?:	OutputOptions;
 
 	constructor(public name: string, public attributes: Attributes = {}, public children: Node[] = []) {
 		for (const i of children) {
@@ -64,13 +64,13 @@ export class Element {
 		return this._elements;
 	}
 
-	public firstElement():	Element | undefined { return this.children.find(i => isElement(i)); }
-	public allElements():	Element[]	{ return this.children.filter(i => isElement(i)); }
-	public firstText() 					{ return this.children.find(i => isText(i)); }
-	public allText():		string[]	{ return this.children.filter(i => isText(i)); }
+	public firstElement():	Element | undefined		{ return this.children.find(i => isElement(i)); }
+	public allElements():	Element[]				{ return this.children.filter(i => isElement(i)); }
+	public firstText(): 	string | undefined		{ return this.children.find(i => isText(i)); }
+	public allText():		string[]				{ return this.children.filter(i => isText(i)); }
 
 	public toString(options?: OutputOptions): string {
-		options = { indent: '  ', afteratt: '', ...options, ...this.options };
+		options = { indent: '  ', afteratt: '', ...options};//, ...this.options };
 		if (!options.entities || !(options.entities instanceof EntityCreator)) {
 			options.entities = new EntityCreator({ ...criticalEntities, ...options?.entities });
 			options.entities_att = new EntityCreator({ quot: '"' }, options.entities);
@@ -99,9 +99,9 @@ export class Element {
 		}
 	}
 
-	public setOptions(options: OutputOptions) {
-		this.options = options; return this;
-	}
+	//public setOptions(options: OutputOptions) {
+	//	this.options = options; return this;
+	//}
 
 	public add(e: Node) {
 		this.children.push(e);
@@ -185,7 +185,7 @@ const reAttr	= new RegExp(`\\s*(${reName})(:?\\s*=\\s*(?:"([^"]*)"|'([^']*)'|(${
 
 export function parseAttributes(text: string, entities: Entities): Attributes {
 	const attributes: Attributes = {};
-	let m: RegExpExecArray | null;
+	let m;
 	while ((m = reAttr.exec(text))) {
 		const value = m[3] ?? m[4] ?? m[5];
 		attributes[m[1]] = value && removeEntities(value, entities);
